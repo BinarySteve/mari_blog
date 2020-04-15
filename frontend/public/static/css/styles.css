@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+
+#nprogress .bar {
+  height: 8px !important;
+}
+
+.ql-editor {
+  min-height: 300px;
+}
+
+.featured-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.logo{
+  height: 75px;
+  width: 75px;
+}
+
+.banner{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.logo-text{
+  font-family: Satisfy, cursive;
+  letter-spacing: 2px;
+}
+
+.lgr-text{
+  font-size: 1.5em;
+}
