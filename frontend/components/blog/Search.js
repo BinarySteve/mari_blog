@@ -59,14 +59,14 @@ const Search = () => {
         <div className="col-md-8">
           <input
             type="search"
-            className="form-control"
+            className="form-control shadow rounded-lg"
             placeholder="Search blogs"
             onChange={handleChange}
           />
         </div>
 
         <div className="col-md-4">
-          <button className="btn btn-block btn-primary" type="submit">
+          <button className="btn btn-block btn-danger shadow rounded-pill" type="submit">
             Search
           </button>
         </div>
@@ -75,7 +75,7 @@ const Search = () => {
   );
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid search-bg">
       <div className="pt-3 pb-5">{searchForm()}</div>
       {searched && (
         <div style={{ marginTop: "-120px", marginBottom: "-80px" }}>

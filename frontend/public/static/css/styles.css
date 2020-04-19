@@ -22,6 +22,9 @@
   height: 75px;
   width: 20%;
 }
+.logo:hover{
+ transform: scale(1.03);
+}
 
 .banner {
   background-size: cover;
@@ -43,7 +46,10 @@
 }
 .mark {
   background-color: #1f4e5f;
-  color: rgb(233, 217, 187);
+  color: #ece2d0;
+}
+.search-bg{
+  background-color: #1f4e5f;
 }
 .btn-primary {
   background-color: #ece2d0;
@@ -54,6 +60,13 @@
   background-color: #f4e7d3;
   border-color: white;
   color: #1f4e5f;
+  transform: scale(1.03);
+}
+.btn-primary:active {
+  background-color: #1f4e5f !important;
+  border-color: white;
+  color: #1f4e5f;
+  transform: scale(1.03);
 }
 .btn-outline-primary {
   border-color: #ece2d0;
@@ -63,6 +76,28 @@
   border-color: #1f4e5f;
   background-color: #ece2d0;
   color: #1f4e5f;
+}
+.btn-danger {
+  background-color: #ece2d0;
+  color: #1f4e5f;
+  border-color: #1f4e5f;
+}
+.btn-danger:hover {
+  background-color: #f4e7d3;
+  border-color: white;
+  color: #1f4e5f;
+}
+.btn-danger:active {
+  background-color: #f4e7d3 !important;
+  border-color: white;
+  color: #1f4e5f;
+ 
+}
+
+
+
+.form-control:focus{
+  border: 2px solid #ece2d0;
 }
 
 @media only screen and (max-width: 1256px) {

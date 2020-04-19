@@ -55,7 +55,7 @@ const SigninComponent = () => {
 
     const signinForm = () =>{
         return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='p-2'>
 
             <div className='form-group'>
                 <input value={email} onChange={handleChange('email')} type='email' className='form-control' placeholder='Enter your email' />
