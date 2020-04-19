@@ -10,7 +10,7 @@ class MyDocument extends Document {
             content="width=device-width, initial-scale=1.0"
           />
           <meta httpEquiv="Content-Type" content="text/html;charSet=UTF-8" />
-          <link rel="shortcut icon" href="./images/static/favLogo.png" type="image/x-icon"/>
+          <link rel="shortcut icon" href="./static/images/favLogo.png" type="image/x-icon"/>
           <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"

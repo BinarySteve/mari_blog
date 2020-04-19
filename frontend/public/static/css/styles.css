@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
 #nprogress .bar {
   height: 8px !important;
@@ -14,24 +13,78 @@
   max-height: 500px;
   object-fit: cover;
 }
-
-.logo{
-  height: 75px;
-  width: 75px;
+.navbar {
+  background-color: #1f4e5f;
+  color: #ece2d0;
 }
 
-.banner{
+.logo {
+  height: 75px;
+  width: 20%;
+}
+
+.banner {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-
-.logo-text{
+.logo-text {
   font-family: Satisfy, cursive;
   letter-spacing: 2px;
 }
 
-.lgr-text{
+.lgr-text {
   font-size: 1.5em;
+  color: #ece2d0;
+}
+.text-hover:hover {
+  color: black;
+}
+.mark {
+  background-color: #1f4e5f;
+  color: rgb(233, 217, 187);
+}
+.btn-primary {
+  background-color: #ece2d0;
+  color: #1f4e5f;
+  border-color: #1f4e5f;
+}
+.btn-primary:hover {
+  background-color: #f4e7d3;
+  border-color: white;
+  color: #1f4e5f;
+}
+.btn-outline-primary {
+  border-color: #ece2d0;
+  color: #1f4e5f;
+}
+.btn-outline-primary:hover {
+  border-color: #1f4e5f;
+  background-color: #ece2d0;
+  color: #1f4e5f;
+}
+
+@media only screen and (max-width: 1256px) {
+  .hidden {
+    display: none;
+  }
+  .display-3 {
+    font-size: 3.5em;
+  }
+  .banner {
+    height: 200px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .display-3 {
+    font-size: 2.5em;
+  }
+  .display-5{
+    text-align: center;
+  }
+  .banner {
+    height: 150px;
+    padding-bottom: 10px;
+  }
 }

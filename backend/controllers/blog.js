@@ -299,3 +299,27 @@ exports.listRelated = (req, res) => {
       res.json(blogs);
     });
 };
+
+exports.listSearch = (req, res) => {
+  const { search } = req.query;
+  if (search) {
+    Blog
+      .find(
+        {
+          $or: [
+            { title: { $regex: search, $options: "i" } },
+            { body: { $regex: search, $options: "i" } },
+          ],
+        },
+        (err, blogs) => {
+          if (err) {
+            res.status(400).json({
+              error: dbErrorHandler(err),
+            });
+          }
+          res.json(blogs);
+        }
+      )
+      .select("-photo -body");
+  }
+};

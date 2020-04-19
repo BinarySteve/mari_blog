@@ -127,7 +127,7 @@ const Blogs = ({
               
             }}
           ></div>
-          <div className="display-2 text-center logo-text pt-5 pb-5">Mari's Essential Oil Blogs</div>
+          <div className="display-3 text-center logo-text p-5">Essential Oil Blogs</div>
           <div className="container-fluid">{showAllBlogs()}</div>
           <div className="container-fluid">{showLoadedBlogs()}</div>
           <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
