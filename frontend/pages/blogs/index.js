@@ -108,9 +108,9 @@ const Blogs = ({
 
   const showLoadedBlogs = () => {
     return loadedBlogs.map((blog, i) => (
-      <article key={i}>
+      <div className="col-sm-6 col-md-4 item" key={i}>
         <Card blog={blog} />
-      </article>
+      </div>
     ));
   };
 
@@ -118,20 +118,14 @@ const Blogs = ({
     <React.Fragment>
       {head()}
       <Layout>
-        <main>
-          <div
-            className="col-md-12 pb-3 banner"
-            style={{
-              backgroundImage: "url(" + "./static/images/oil-banner.jpg" + ")",
-              height: "300px",
-              
-            }}
-          ></div>
-          <div className="display-3 text-center logo-text p-5">Essential Oil Blogs</div>
-          <div className="container-fluid">{showAllBlogs()}</div>
-          <div className="container-fluid">{showLoadedBlogs()}</div>
-          <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
-        </main>
+        <div className="article-list mt-5">
+          <div className="container">
+            <div className="intro">
+              <h2 className="text-center">Latest Articles</h2>
+              <div className="row articles mt-5">{showAllBlogs()}</div>
+            </div>
+          </div>
+        </div>
       </Layout>
     </React.Fragment>
   );

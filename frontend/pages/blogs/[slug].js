@@ -74,54 +74,30 @@ const SingleBlog = ({ blog, query }) => {
     <React.Fragment>
       {head()}
       <Layout>
-        <main className="pt-5">
-          <article>
-            <div className="container-fluid">
-              <section>
-                <div className="row" style={{ marginTop: "-30px" }}>
+        <div className="article-clean mt-5">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+                <div className="intro">
+                  <h1 className="text-center">{blog.title}</h1>
+                  <p className="text-center">
+                    <span className="by">by </span>
+                    {blog.postedBy.name} |{" "}
+                    <span className="date">
+                      {moment(blog.updatedAt).fromNow()}{" "}
+                    </span>
+                  </p>
                   <img
+                    className="img-fluid"
                     src={`${API}/blog/photo/${blog.slug}`}
                     alt={blog.title}
-                    className="img img-fluid featured-image"
                   />
                 </div>
-              </section>
-
-              <section>
-                <div className="container">
-                  <h1 className="display-2 pb-3 pt-3 text-center font-weight-bold ">
-                    {blog.title}
-                  </h1>
-                  <p className="lead mt-3 mark">
-                    Written by {blog.postedBy.name} | Published{" "}
-                    {moment(blog.updatedAt).fromNow()}
-                  </p>
-
-                  <div className="pb-3">
-                    <br />
-                    <br />
-                  </div>
-                </div>
-              </section>
+                <div className="text">{renderHTML(blog.body)}</div>
+              </div>
             </div>
-
-            <div className="container">
-              <section>
-                <div className="col-md-12 lead">{renderHTML(blog.body)}</div>
-              </section>
-            </div>
-
-            <div className="container">
-              <h4 className="text-center pt-5 pb-5 h2">Related blogs</h4>
-              <hr />
-              <div className="row">{showRelatedBlogs()}</div>
-            </div>
-
-            <div className="container pb-5">
-              <p>show comments</p>
-            </div>
-          </article>
-        </main>
+          </div>
+        </div>
       </Layout>
     </React.Fragment>
   );

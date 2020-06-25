@@ -35,18 +35,57 @@ const Header = (props) => {
 
   return (
     <React.Fragment>
-      <Navbar className="navbar" dark expand="md">
+      <nav className="navbar navbar-light navbar-expand-md navigation-clean-search">
+        <div className="container">
+          <a className="navbar-brand" href="/">
+            {APP_NAME}
+          </a>
+          <button
+            data-toggle="collapse"
+            data-target="#navcol-1"
+            className="navbar-toggler"
+          >
+            <span className="sr-only">Toggle navigation</span>
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navcol-1">
+            <ul className="nav navbar-nav">
+              <li role="presentation" className="nav-item">
+                <a className="nav-link" href="/">
+                  Home
+                </a>
+              </li>
+              <li role="presentation" className="nav-item">
+                <a className="nav-link" href="/blogs">
+                  Blogs
+                </a>
+              </li>
+              <li role="presentation" className="nav-item">
+                <a className="nav-link" href="/">
+                  About Mari
+                </a>
+              </li>
+              {isAuth() && isAuth().role === 1 && (
+                <li role="presentation" className="nav-item">
+                  <a className="nav-link" href="/admin">{`${
+                    isAuth().name
+                  }'s Dashboard`}</a>
+                </li>
+              )}
+            </ul>
+            <Search />
+          </div>
+        </div>
+      </nav>
+      {/* <Navbar
+        className="navbar navbar-expand-lg navigation-clean-search"
+        light
+        fixed='top'
+        expand="md"
+      >
         <Link href="/">
-          <NavLink className="font-weight-bold text-white">
-            <img
-              src={DOMAIN + "/static/images/mari-logo.png"}
-              alt="Testing"
-              className="img img-fluid logo hidden"
-              style={{ cursor: "pointer" }}
-            />
-            <span className=" ml-3 logo-text lgr-text">
-              Mari's Essential Living
-            </span>
+          <NavLink className="navbar-brand">
+            <span style={{ cursor: "pointer" }}></span>
           </NavLink>
         </Link>
 
@@ -55,47 +94,56 @@ const Header = (props) => {
           <Nav className="ml-auto" navbar>
             <React.Fragment>
               <NavItem>
-                <Link href="/blogs">
+                <Search />
+              </NavItem>
+              <NavItem>
+                <Link href="/">
                   <NavLink>
-                    <span
-                      className="logo-text lgr-text text-hover"
-                      style={{ cursor: "pointer" }}
-                    >
-                      Blogs
+                    <span className="nav-item" style={{ cursor: "pointer" }}>
+                      Home
                     </span>
                   </NavLink>
                 </Link>
               </NavItem>
             </React.Fragment>
-
-            {!isAuth() && (
-              <React.Fragment>
-                <NavItem>
-                  <Link href="/">
-                    <NavLink>
-                      <span
-                        className="logo-text lgr-text text-hover"
-                        style={{ cursor: "pointer" }}
-                      >
-                        Products
-                      </span>
-                    </NavLink>
-                  </Link>
-                </NavItem>
-              </React.Fragment>
-            )}
-
-            {isAuth() && isAuth().role === 1 && (
+            <React.Fragment>
               <NavItem>
-                <Link href="/admin">
-                  <NavLink>{`${isAuth().name}'s Dashboard`}</NavLink>
+                <Link href="/blogs">
+                  <NavLink>
+                    <span className="nav-item" style={{ cursor: "pointer" }}>
+                      Blog
+                    </span>
+                  </NavLink>
                 </Link>
               </NavItem>
-            )}
+            </React.Fragment>
+            <React.Fragment>
+              <NavItem>
+                <Link href="/">
+                  <NavLink>
+                    <span className="nav-item" style={{ cursor: "pointer" }}>
+                      Products
+                    </span>
+                  </NavLink>
+                </Link>
+              </NavItem>
+            </React.Fragment>
+            <React.Fragment>
+              <NavItem>
+                <Link href="/">
+                  <NavLink>
+                    <span className="nav-item" style={{ cursor: "pointer" }}>
+                      About Mari
+                    </span>
+                  </NavLink>
+                </Link>
+              </NavItem> */}
+      {/* </React.Fragment> */}
 
-            {isAuth() && (
+      {/* {isAuth() && (
               <NavItem>
                 <NavLink
+                  className="nav-item"
                   style={{ cursor: "pointer" }}
                   onClick={() => signout(() => Router.replace(`/signin`))}
                 >
@@ -105,8 +153,7 @@ const Header = (props) => {
             )}
           </Nav>
         </Collapse>
-      </Navbar>
-      <Search />
+      </Navbar> */}
     </React.Fragment>
   );
 };

@@ -54,35 +54,53 @@ const Search = () => {
   };
 
   const searchForm = () => (
-    <form onSubmit={searchSubmit}>
-      <div className="row">
-        <div className="col-md-8">
+    <React.Fragment>
+      <form className="form-inline ml-auto" onSubmit={searchSubmit}>
+        <div className="form-group">
           <input
-            type="search"
-            className="form-control shadow rounded-lg"
+            className="form-control search-field"
             placeholder="Search blogs"
+            type="search"
+            id="search-field"
+            name="search"
             onChange={handleChange}
           />
         </div>
+        <button className="btn btn-light action-button" type="submit">
+          <i className="fa fa-search"></i>
+        </button>
+      </form>
+    </React.Fragment>
 
-        <div className="col-md-4">
-          <button className="btn btn-block btn-danger shadow rounded-pill" type="submit">
-            Search
-          </button>
-        </div>
-      </div>
-    </form>
+    // <form onSubmit={searchSubmit}>
+    //   <div className="row">
+    //     <div className="col-md-8">
+    //       <input
+    //         type="search"
+    //         className="form-control shadow rounded-lg"
+    //         placeholder="Search blogs"
+    //         onChange={handleChange}
+    //       />
+    //     </div>
+
+    //     <div className="col-md-4">
+    //       <button className="btn btn-block btn-danger shadow rounded-pill" type="submit">
+    //         Search
+    //       </button>
+    //     </div>
+    //   </div>
+    // </form>
   );
 
   return (
-    <div className="container-fluid search-bg">
-      <div className="pt-3 pb-5">{searchForm()}</div>
+    <React.Fragment>
+      <div>{searchForm()}</div>
       {searched && (
         <div style={{ marginTop: "-120px", marginBottom: "-80px" }}>
           {searchedBlogs(results)}
         </div>
       )}
-    </div>
+    </React.Fragment>
   );
 };
 
