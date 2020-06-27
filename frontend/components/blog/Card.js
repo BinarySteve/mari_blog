@@ -32,7 +32,7 @@ const Card = ({ blog }) => {
 
       <p className="description">{renderHTML(blog.excerpt)}</p>
       <a className="action" href={`/blogs/${blog.slug}`}>
-        <i className="fas fa-arrow-circle-right"></i>
+        <i className="fas fa-arrow-circle-right action"></i>
       </a>
     </React.Fragment>
   );

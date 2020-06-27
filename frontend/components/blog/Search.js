@@ -11,7 +11,7 @@ const Search = () => {
     message: "",
   });
 
-  const { search, results, searched, message } = values;
+  const { search, results, searched, message, emptyMessage, singleMessage } = values;
 
   const searchSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +20,9 @@ const Search = () => {
         ...values,
         results: data,
         searched: true,
-        message: `${data.length} blogs found`,
+        message: `${data.length} Blogs found`,
+        emptyMessage: '0 Blogs found',
+        singleMessage: '1 Blog found'
       });
     });
   };
@@ -38,7 +40,10 @@ const Search = () => {
   const searchedBlogs = (results = []) => {
     return (
       <div className="jumbotron bg-white">
-        {message && <p className="pt-4 text-muted font-italic">{message}</p>}
+        {results.length == 0 && message && <p className="pt-4 text-muted font-italic">{emptyMessage}</p>}
+        {results.length == 1 && message && <p className="pt-4 text-muted font-italic">{singleMessage}</p>}
+        {results.length > 1 && message && <p className="pt-4 text-muted font-italic">{message}</p>}
+
 
         {results.map((blog, i) => {
           return (
@@ -64,6 +69,7 @@ const Search = () => {
             id="search-field"
             name="search"
             onChange={handleChange}
+            autoComplete="off"
           />
         </div>
         <button className="btn btn-light action-button" type="submit">
@@ -71,35 +77,12 @@ const Search = () => {
         </button>
       </form>
     </React.Fragment>
-
-    // <form onSubmit={searchSubmit}>
-    //   <div className="row">
-    //     <div className="col-md-8">
-    //       <input
-    //         type="search"
-    //         className="form-control shadow rounded-lg"
-    //         placeholder="Search blogs"
-    //         onChange={handleChange}
-    //       />
-    //     </div>
-
-    //     <div className="col-md-4">
-    //       <button className="btn btn-block btn-danger shadow rounded-pill" type="submit">
-    //         Search
-    //       </button>
-    //     </div>
-    //   </div>
-    // </form>
   );
 
   return (
     <React.Fragment>
       <div>{searchForm()}</div>
-      {searched && (
-        <div style={{ marginTop: "-120px", marginBottom: "-80px" }}>
-          {searchedBlogs(results)}
-        </div>
-      )}
+      {searched && <div>{searchedBlogs(results)}</div>}
     </React.Fragment>
   );
 };

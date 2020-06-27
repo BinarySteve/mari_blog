@@ -14,7 +14,7 @@ const Footer = () => {
             <i className="fab fa-snapchat-square"></i>
           </a>
           <a href="#">
-            <i class="fab fa-twitter-square"></i>
+            <i className="fab fa-twitter-square"></i>
           </a>
           <a href="#">
             <i className="fab fa-facebook"></i>

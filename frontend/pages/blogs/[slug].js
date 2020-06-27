@@ -79,7 +79,7 @@ const SingleBlog = ({ blog, query }) => {
             <div className="row">
               <div className="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
                 <div className="intro">
-                  <h1 className="text-center">{blog.title}</h1>
+                  <h1 className="text-center">{blog.title.toUpperCase()}</h1>
                   <p className="text-center">
                     <span className="by">by </span>
                     {blog.postedBy.name} |{" "}
