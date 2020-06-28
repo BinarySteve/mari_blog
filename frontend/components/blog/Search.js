@@ -11,7 +11,14 @@ const Search = () => {
     message: "",
   });
 
-  const { search, results, searched, message, emptyMessage, singleMessage } = values;
+  const {
+    search,
+    results,
+    searched,
+    message,
+    emptyMessage,
+    singleMessage,
+  } = values;
 
   const searchSubmit = (e) => {
     e.preventDefault();
@@ -21,8 +28,8 @@ const Search = () => {
         results: data,
         searched: true,
         message: `${data.length} Blogs found`,
-        emptyMessage: '0 Blogs found',
-        singleMessage: '1 Blog found'
+        emptyMessage: "0 Blogs found",
+        singleMessage: "1 Blog found",
       });
     });
   };
@@ -39,22 +46,27 @@ const Search = () => {
 
   const searchedBlogs = (results = []) => {
     return (
-      <div className="jumbotron bg-white">
-        {results.length == 0 && message && <p className="pt-4 text-muted font-italic">{emptyMessage}</p>}
-        {results.length == 1 && message && <p className="pt-4 text-muted font-italic">{singleMessage}</p>}
-        {results.length > 1 && message && <p className="pt-4 text-muted font-italic">{message}</p>}
-
+      <li className="list-group-item">
+        {results.length == 0 && message && (
+          <p className="pt-4 text-muted font-italic">{emptyMessage}</p>
+        )}
+        {results.length == 1 && message && (
+          <p className="pt-4 text-muted font-italic">{singleMessage}</p>
+        )}
+        {results.length > 1 && message && (
+          <p className="pt-4 text-muted font-italic">{message}</p>
+        )}
 
         {results.map((blog, i) => {
           return (
-            <div key={i}>
+            <li className="list-group-item" key={i}>
               <Link href={`/blogs/${blog.slug}`}>
                 <a className="text-primary">{blog.title}</a>
               </Link>
-            </div>
+            </li>
           );
         })}
-      </div>
+      </li>
     );
   };
 
@@ -81,8 +93,10 @@ const Search = () => {
 
   return (
     <React.Fragment>
-      <div>{searchForm()}</div>
-      {searched && <div>{searchedBlogs(results)}</div>}
+      <div>
+        {searchForm()}
+        {searched && <ul className="list-group" style={{position:"absolute", zIndex:1}}>{searchedBlogs(results)}</ul>}
+      </div>
     </React.Fragment>
   );
 };
