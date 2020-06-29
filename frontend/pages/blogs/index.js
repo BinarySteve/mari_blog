@@ -118,11 +118,12 @@ const Blogs = ({
     <React.Fragment>
       {head()}
       <Layout>
-        <div className="article-list mt-5">
+        <div className=" mt-5">
           <div className="container">
             <div className="intro">
-              <h2 className="text-center">Latest Articles</h2>
-              <div className="row articles mt-5">{showAllBlogs()}</div>
+              <h2 className="display-1 lora text-center">Articles</h2>
+              <hr/>
+              <div className="card-group">{showAllBlogs()}</div>
             </div>
           </div>
         </div>

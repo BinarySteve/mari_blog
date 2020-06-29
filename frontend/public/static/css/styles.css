@@ -10,13 +10,9 @@
   margin: 0 auto 30px;
 }
 
-.article-clean .intro h1 {
-  font-size: 32px;
-  margin-bottom: 15px;
-  padding-top: 20px;
-  line-height: 1.5;
+.article-clean .intro .display-4 {
+  font-family: "Lora", serif !important;
   color: inherit;
-  margin-top: 20px;
 }
 
 .article-clean .intro p {
@@ -82,77 +78,9 @@
   max-width: 100%;
 }
 
-.article-list {
-  color: #313437;
-  background-color: #fff;
-}
-
-.article-list p {
-  color: #7d8285;
-}
-
-.article-list h2 {
-  font-weight: bold;
-  margin-bottom: 40px;
-  padding-top: 40px;
-  color: inherit;
-}
-
-@media (max-width: 767px) {
-  .article-list h2 {
-    margin-bottom: 25px;
-    padding-top: 25px;
-    font-size: 24px;
-  }
-}
-
-.article-list .intro {
-  font-size: 16px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.article-list .intro p {
-  margin-bottom: 0;
-}
-
-.article-list .articles {
-  padding-bottom: 40px;
-}
-
-.article-list .item {
-  padding-top: 50px;
-  min-height: 425px;
-  text-align: center;
-}
-
-.article-list .item .name {
-  font-weight: bold;
-  font-size: 16px;
-  margin-top: 20px;
-  color: inherit;
-}
-
-.article-list .item .description {
-  font-size: 14px;
-  margin-top: 15px;
-  margin-bottom: 0;
-}
-
-.article-list .item .action {
-  font-size: 24px;
-  width: 24px;
-  margin: 22px auto 0;
-  line-height: 1;
-  display: block;
-  color: #4f86c3;
-  opacity: 0.85;
-  transition: opacity 0.2s;
+.card a:hover {
   text-decoration: none;
-}
-
-.article-list .item .action:hover {
-  opacity: 1;
+  color: #56c6c6;
 }
 
 .footer-basic {
@@ -182,6 +110,7 @@
 
 .footer-basic ul a:hover {
   opacity: 1;
+  color: #56c6c6;
 }
 
 .footer-basic .social {
@@ -205,6 +134,7 @@
 
 .footer-basic .social > a:hover {
   opacity: 0.9;
+  color: #56c6c6;
 }
 
 .footer-basic .copyright {
@@ -215,6 +145,24 @@
   margin-bottom: 0;
 }
 
+.footer-basic .copyright a {
+  text-decoration: none;
+  color: #7f5be8;
+}
+.footer-basic .copyright a:hover {
+  text-decoration: none;
+  color: #56c6c6;
+}
+
+.list-group-item a:hover {
+  color: #56c6c6 !important;
+  text-decoration: none;
+}
+
+.lora {
+  font-family: "Lora", serif;
+}
+
 .navigation-clean-search {
   background: #fff;
   padding-top: 0.75rem;
@@ -222,7 +170,7 @@
   color: #333;
   border-radius: 0;
   box-shadow: none;
-  border: none;
+  border-bottom: #56c6c6;
   margin: 0;
 }
 
@@ -232,6 +180,10 @@
     padding-bottom: 1rem;
   }
 }
+.navigation-clean-search .border{
+  border-width: 5px !important;
+  color: #56c6c6;
+}
 
 .navigation-clean-search .navbar-brand {
   font-weight: bold;
@@ -239,11 +191,11 @@
 }
 
 .navigation-clean-search .navbar-brand:hover {
-  color: #222;
+  color: #56c6c6 !important;
 }
 
 .navigation-clean-search .navbar-toggler {
-  border-color: #ddd;
+  border-color: #56c6c6 !important;
 }
 
 .navigation-clean-search .navbar-toggler:hover,
@@ -252,12 +204,14 @@
 }
 
 .navigation-clean-search .navbar-toggler {
-  color: #888;
+  background-color: #56c6c6 !important;
+
 }
+
 
 .navigation-clean-search .navbar-collapse,
 .navigation-clean-search .form-inline {
-  border-top-color: #ddd;
+  border-top-color: #56c6c6 !important;
 }
 
 .navigation-clean-search .navbar-nav a.active,
@@ -266,10 +220,10 @@
   box-shadow: none;
 }
 
-.navigation-clean-search.navbar-light .navbar-nav a.active,
 .navigation-clean-search.navbar-light .navbar-nav a.active:focus,
+.navigation-clean-search.navbar-light .navbar-nav a.active,
 .navigation-clean-search.navbar-light .navbar-nav a.active:hover {
-  color: #8f8f8f;
+  color: #56c6c6;
   box-shadow: none;
   background: none;
   pointer-events: none;
@@ -286,7 +240,7 @@
 
 .navigation-clean-search.navbar-light .navbar-nav .nav-link:focus,
 .navigation-clean-search.navbar-light .navbar-nav .nav-link:hover {
-  color: #37434d !important;
+  color: #56c6c6 !important;
   background-color: transparent;
 }
 
@@ -309,7 +263,7 @@
 }
 
 .navigation-clean-search .form-inline label {
-  color: #ccc;
+  color: #56c6c6;
 }
 
 .navigation-clean-search .form-inline .search-field {
@@ -320,7 +274,8 @@
   color: #ccc;
   box-shadow: none;
   color: inherit;
-  transition: border-bottom-color 0.3s;
+  transition: border-bottom-color 0.5s;
+  font-style: italic;
 }
 
 @media (max-width: 767px) {
@@ -331,5 +286,5 @@
 }
 
 .navigation-clean-search .form-inline .search-field:focus {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #56c6c6;
 }

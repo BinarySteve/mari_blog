@@ -75,11 +75,11 @@ const SingleBlog = ({ blog, query }) => {
       {head()}
       <Layout>
         <div className="article-clean mt-5">
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
               <div className="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
                 <div className="intro">
-                  <h1 className="text-center">{blog.title.toUpperCase()}</h1>
+                  <h3 className="text-center display-4">{blog.title.toUpperCase()}</h3>
                   <p className="text-center">
                     <span className="by">by </span>
                     {blog.postedBy.name} |{" "}

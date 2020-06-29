@@ -46,22 +46,22 @@ const Search = () => {
 
   const searchedBlogs = (results = []) => {
     return (
-      <li className="list-group-item">
-        {results.length == 0 && message && (
-          <p className="pt-4 text-muted font-italic">{emptyMessage}</p>
+      <li className="list-group-item rounded m-0 p-0">
+        {/* {results.length == 0 && message && (
+          {emptyMessage}
         )}
         {results.length == 1 && message && (
-          <p className="pt-4 text-muted font-italic">{singleMessage}</p>
+          {singleMessage}
         )}
         {results.length > 1 && message && (
-          <p className="pt-4 text-muted font-italic">{message}</p>
-        )}
+          {message}
+        )} */}
 
         {results.map((blog, i) => {
           return (
             <li className="list-group-item" key={i}>
               <Link href={`/blogs/${blog.slug}`}>
-                <a className="text-primary">{blog.title}</a>
+                <a className="text-muted">{blog.title}</a>
               </Link>
             </li>
           );
@@ -95,7 +95,7 @@ const Search = () => {
     <React.Fragment>
       <div>
         {searchForm()}
-        {searched && <ul className="list-group" style={{position:"absolute", zIndex:1}}>{searchedBlogs(results)}</ul>}
+        {searched && <ul className="list-group list-group-flush" style={{position:"absolute", zIndex:1}}>{searchedBlogs(results)}</ul>}
       </div>
     </React.Fragment>
   );

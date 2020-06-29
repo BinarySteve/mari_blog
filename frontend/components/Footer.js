@@ -36,7 +36,7 @@ const Footer = () => {
           </li>
         </ul>
         <p className="copyright">
-          {APP_NAME}&copy; {year.getFullYear()}{" "}
+          {APP_NAME}&copy; {year.getFullYear()} Created by <a href="https://stevenchavez.me">SCWebDev</a>
         </p>
       </footer>
     </div>

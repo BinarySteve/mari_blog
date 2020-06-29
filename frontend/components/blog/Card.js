@@ -19,21 +19,29 @@ const Card = ({ blog }) => {
     ));
   return (
     <React.Fragment>
-      <a href={`/blogs/${blog.slug}`}>
-        <img className="img-fluid" src={`${API}/blog/photo/${blog.slug}`} />
-      </a>
-
-      <h3 className="name">{blog.title}</h3>
-
-      <p className="description">
-        Written by {blog.postedBy.name} | Published{" "}
-        {moment(blog.updatedAt).fromNow()}
-      </p>
-
-      <p className="description">{renderHTML(blog.excerpt)}</p>
-      <a className="action" href={`/blogs/${blog.slug}`}>
-        <i className="fas fa-arrow-circle-right action"></i>
-      </a>
+      <div className="card rounded shadow-lg">
+        <h3 className="card-title text-center lora display-4">{blog.title.toUpperCase()}</h3>
+        <small className="text-muted text-center">
+          Written by {blog.postedBy.name} | Published{" "}
+          {moment(blog.updatedAt).fromNow()}
+        </small>
+        <div className="row mt-5">
+          <div className="col-md-6">
+            <a href={`/blogs/${blog.slug}`}>
+              <img
+                className="img-fluid"
+                src={`${API}/blog/photo/${blog.slug}`}
+              />
+            </a>
+          </div>
+          <div className="card-body col-md-6">
+            <p className="card-text">{renderHTML(blog.excerpt)}</p>
+            <a href={`/blogs/${blog.slug}`}>
+              <span >Read Blog <i className="fas fa-arrow-circle-right"></i></span>
+            </a>
+          </div>
+        </div>
+      </div>
     </React.Fragment>
   );
 };
