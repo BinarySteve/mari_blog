@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <React.Fragment>
-      <nav className="navbar navbar-light border-bottom navbar-expand-md navigation-clean-search">
+      <nav className="navbar navbar-light border-bottom shadow navbar-expand-md navigation-clean-search">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             {APP_NAME}
