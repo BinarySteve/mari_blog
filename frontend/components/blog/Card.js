@@ -20,7 +20,7 @@ const Card = ({ blog }) => {
   return (
     <React.Fragment>
       <div className="card rounded shadow-lg">
-        <h3 className="card-title text-center lora display-4">{blog.title.toUpperCase()}</h3>
+        <h3 className="article-clean text-center display-4"><a href={`/blogs/${blog.slug}`}>{blog.title.toUpperCase()}</a></h3>
         <small className="text-muted text-center">
           Written by {blog.postedBy.name} | Published{" "}
           {moment(blog.updatedAt).fromNow()}

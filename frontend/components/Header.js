@@ -31,7 +31,7 @@ const Header = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navcol-1">
-            <ul className="nav navbar-nav">
+            <ul className="nav navbar-nav mx-auto">
               <li role="presentation" className="nav-item">
                 <a className="nav-link" href="/">
                   Home

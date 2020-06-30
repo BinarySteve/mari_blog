@@ -72,7 +72,7 @@ const Search = () => {
 
   const searchForm = () => (
     <React.Fragment>
-      <form className="form-inline ml-auto" onSubmit={searchSubmit}>
+      <form className="form-inline mr-auto" onSubmit={searchSubmit}>
         <div className="form-group">
           <input
             className="form-control search-field"
@@ -93,7 +93,7 @@ const Search = () => {
 
   return (
     <React.Fragment>
-      <div>
+      <div className="ml-auto">
         {searchForm()}
         {searched && <ul className="list-group list-group-flush" style={{position:"absolute", zIndex:1}}>{searchedBlogs(results)}</ul>}
       </div>
