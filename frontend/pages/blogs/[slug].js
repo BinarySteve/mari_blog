@@ -79,7 +79,7 @@ const SingleBlog = ({ blog, query }) => {
             <div className="row">
               <div className="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
                 <div className="intro">
-                  <h3 className="text-center display-4">
+                  <h3 className="text-center display-5">
                     {blog.title.toUpperCase()}
                   </h3>
                   <p className="text-center">

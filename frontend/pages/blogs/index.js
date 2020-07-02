@@ -121,7 +121,7 @@ const Blogs = ({
         <div className=" mt-5">
           <div className="container">
             <div className="intro">
-              <h2 className="display-1 lora text-center">Articles</h2>
+              <h2 className="display-2 lora text-center">Essential Oil & Wellness Blogs</h2>
               <hr/>
               <div className="card-group">{showAllBlogs()}</div>
             </div>

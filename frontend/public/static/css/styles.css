@@ -2,22 +2,27 @@
   color: #56585b;
   background-color: #fff;
   font-family: "Lora", serif;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .article-clean .intro {
-  font-size: 16px;
+  font-size: 12px;
   margin: 0 auto 30px;
 }
 
-.article-clean .intro .display-4 {
+.article-clean .intro .display-5 {
   font-family: "Lora", serif !important;
   color: inherit;
+}
+@media (min-width: 768px) {
+  .article-clean .intro .display-5 {
+    font-size: 3.5rem;
+  }
 }
 
 .article-clean .intro p {
   color: #929292;
-  font-size: 1.5em;
+  font-size: 12px;
 }
 
 .article-clean .intro p .by {
@@ -52,11 +57,11 @@
   }
 }
 
-.article-clean .text h2 {
+.article-clean .text h3 {
   margin-top: 28px;
   margin-bottom: 20px;
   line-height: 1.45;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
   color: #333;
 }
@@ -77,10 +82,54 @@
   margin-bottom: 12px;
   max-width: 100%;
 }
-
+.card a:visited {
+  text-decoration: none;
+  color: #333;
+}
 .card a:hover {
   text-decoration: none;
   color: #56c6c6;
+}
+
+.card-group .card .article-clean {
+  margin-top: 28px;
+  margin-bottom: 20px;
+  line-height: 1.45;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+@media (min-width: 768px) {
+  .card-group .card .article-clean {
+    font-size: 2.5rem;
+  }
+}
+
+.card-group .card .article-clean .card-text {
+  margin-top: 28px;
+  margin-bottom: 20px;
+  line-height: 1.45;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+@media (min-width: 768px) {
+  .card-group .card .article-clean .card-text {
+    font-size: 2.5rem;
+  }
+}
+
+div.mt-5 > div > div > h2 {
+  font-size: 3.5rem;
+  margin: 0 auto 30px;
+}
+
+@media (min-width: 768px) {
+  div.mt-5 > div > div > h2 {
+    font-size: 5rem;
+  }
 }
 
 .footer-basic {
@@ -180,7 +229,7 @@
     padding-bottom: 1rem;
   }
 }
-.navigation-clean-search .border{
+.navigation-clean-search .border {
   border-width: 5px !important;
   color: #56c6c6;
 }
@@ -205,9 +254,7 @@
 
 .navigation-clean-search .navbar-toggler {
   background-color: #56c6c6 !important;
-
 }
-
 
 .navigation-clean-search .navbar-collapse,
 .navigation-clean-search .form-inline {

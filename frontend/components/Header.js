@@ -43,7 +43,7 @@ const Header = () => {
                 </a>
               </li>
               <li role="presentation" className="nav-item">
-                <a className="nav-link" href="/">
+                <a className="nav-link" href="/about">
                   About Mari
                 </a>
               </li>
