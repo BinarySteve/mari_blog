@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <React.Fragment>
-      <nav className="navbar navbar-light border-bottom shadow navbar-expand-md navigation-clean-search">
+      <nav className="navbar navbar-dark bg-dark border-bottom shadow navbar-expand-md navigation-clean-search">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             {APP_NAME}
@@ -31,7 +31,7 @@ const Header = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navcol-1">
-            <ul className="nav navbar-nav mx-auto">
+            <ul className="nav navbar-nav ">
               <li role="presentation" className="nav-item">
                 <a className="nav-link" href="/">
                   Home

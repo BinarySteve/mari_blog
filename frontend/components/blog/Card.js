@@ -20,10 +20,12 @@ const Card = ({ blog }) => {
   return (
     <React.Fragment>
       <div className="card rounded shadow-lg text">
-        <h3 className="article-clean text-center display-4"><a href={`/blogs/${blog.slug}`}>{blog.title.toUpperCase()}</a></h3>
+        <h3 className="article-clean text-center display-4" id="blog-title">
+          <a href={`/blogs/${blog.slug}`}>{blog.title.toUpperCase()}</a>
+        </h3>
         <small className="text-muted text-center">
-          Written by {blog.postedBy.name} | Published{" "}
-          {moment(blog.updatedAt).fromNow()}
+          <span className="by">by</span> {blog.postedBy.name}
+          <span className="date">{moment(blog.updatedAt).fromNow()}</span>
         </small>
         <div className="row mt-5">
           <div className="col-md-6">
@@ -35,9 +37,13 @@ const Card = ({ blog }) => {
             </a>
           </div>
           <div className="card-body col-md-6">
-            <p className="card-text">{renderHTML(blog.excerpt)}</p>
+            <p className="card-text" id="blog-text">
+              {renderHTML(blog.excerpt)}
+            </p>
             <a href={`/blogs/${blog.slug}`}>
-              <span >Read Blog <i className="fas fa-arrow-circle-right"></i></span>
+              <span>
+                Read Blog <i className="fas fa-arrow-circle-right"></i>
+              </span>
             </a>
           </div>
         </div>

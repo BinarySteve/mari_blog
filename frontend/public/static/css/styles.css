@@ -22,14 +22,15 @@
 
 .article-clean .intro p {
   color: #929292;
-  font-size: 12px;
+  font-size: 1.5em;
 }
 
-.article-clean .intro p .by {
+.by {
   font-style: italic;
+  text-transform: capitalize;
 }
 
-.article-clean .intro p .date {
+.date {
   text-transform: uppercase;
   padding: 4px 0 4px 10px;
   margin-left: 10px;
@@ -106,18 +107,33 @@
   }
 }
 
-.card-group .card .article-clean .card-text {
+#blog-title {
   margin-top: 28px;
   margin-bottom: 20px;
   line-height: 1.45;
-  font-size: 18px;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #333;
 }
 
 @media (min-width: 768px) {
-  .card-group .card .article-clean .card-text {
-    font-size: 2.5rem;
+  #blog-title {
+    font-size: 2.9rem;
+  }
+}
+
+#blog-text {
+  margin-top: 28px;
+  margin-bottom: 20px;
+  line-height: 1.45;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+@media (min-width: 768px) {
+  #blog-text {
+    font-size: 1.2rem;
   }
 }
 
@@ -203,7 +219,16 @@ div.mt-5 > div > div > h2 {
   color: #56c6c6;
 }
 
+.list-group-item:hover {
+  background-color: #4b4c4d;
+}
+
 .list-group-item a:hover {
+  color: #56c6c6 !important;
+  text-decoration: none;
+}
+
+.list-group-item a:focus {
   color: #56c6c6 !important;
   text-decoration: none;
 }
@@ -213,10 +238,10 @@ div.mt-5 > div > div > h2 {
 }
 
 .navigation-clean-search {
-  background: #fff;
+  background: #4b4c4d;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  color: #333;
+  color: #aaa;
   border-radius: 0;
   box-shadow: none;
   border-bottom: #56c6c6;
@@ -267,9 +292,9 @@ div.mt-5 > div > div > h2 {
   box-shadow: none;
 }
 
-.navigation-clean-search.navbar-light .navbar-nav a.active:focus,
-.navigation-clean-search.navbar-light .navbar-nav a.active,
-.navigation-clean-search.navbar-light .navbar-nav a.active:hover {
+.navigation-clean-search.navbar-dark .navbar-nav a.active:focus,
+.navigation-clean-search.navbar-dark .navbar-nav a.active,
+.navigation-clean-search.navbar-dark .navbar-nav a.active:hover {
   color: #56c6c6;
   box-shadow: none;
   background: none;
@@ -281,12 +306,12 @@ div.mt-5 > div > div > h2 {
   padding-right: 18px;
 }
 
-.navigation-clean-search.navbar-light .navbar-nav .nav-link {
-  color: #465765;
+.navigation-clean-search.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
 }
 
-.navigation-clean-search.navbar-light .navbar-nav .nav-link:focus,
-.navigation-clean-search.navbar-light .navbar-nav .nav-link:hover {
+.navigation-clean-search.navbar-dark .navbar-nav .nav-link:focus,
+.navigation-clean-search.navbar-dark .navbar-nav .nav-link:hover {
   color: #56c6c6 !important;
   background-color: transparent;
 }
