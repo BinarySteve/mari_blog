@@ -38,11 +38,11 @@ const Blogs = ({
 
       <meta
         property="og:image"
-        content={`${DOMAIN}/static/images/seoblog.jpg`}
+        content={`${DOMAIN}/static/images/mari-logo.jpng`}
       />
       <meta
         property="og:image:secure_url"
-        ccontent={`${DOMAIN}/static/images/seoblog.jpg`}
+        ccontent={`${DOMAIN}/static/images/mari-logo.png`}
       />
       <meta property="og:image:type" content="image/jpg" />
       <meta property="fb:app_id" content={`${FB_APP_ID}`} />
@@ -71,8 +71,8 @@ const Blogs = ({
     return (
       size > 0 &&
       size >= limit && (
-        <button onClick={loadMore} className="btn btn-primary btn-lg shadow">
-          Load More
+        <button onClick={loadMore} className="btn ld-btn mx-auto">
+          <i className="fas fa-arrow-circle-down"></i>Load more
         </button>
       )
     );
@@ -82,9 +82,9 @@ const Blogs = ({
     return blogs.map((blog, i) => {
       // ()
       return (
-        <article key={i}>
+        <article className="mb-3" key={i}>
           <Card blog={blog} />
-          <hr />
+          
         </article>
       );
     });
@@ -108,9 +108,10 @@ const Blogs = ({
 
   const showLoadedBlogs = () => {
     return loadedBlogs.map((blog, i) => (
-      <div className="col-sm-6 col-md-4 item" key={i}>
+      <article key={i}>
         <Card blog={blog} />
-      </div>
+        <hr />
+      </article>
     ));
   };
 
@@ -121,9 +122,15 @@ const Blogs = ({
         <div className=" mt-5">
           <div className="container">
             <div className="intro">
-              <h2 className="display-2 lora text-center">Essential Oil & Wellness Blogs</h2>
-              <hr/>
-              <div className="card-group">{showAllBlogs()}</div>
+              <h2 className="display-2 cfont text-center">
+                Essential Oil & Wellness Blogs
+              </h2>
+              <hr />
+              <div className="card-group">
+                {showAllBlogs()}
+                {showLoadedBlogs()}
+                {loadMoreButton()}
+              </div>
             </div>
           </div>
         </div>

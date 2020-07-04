@@ -23,7 +23,7 @@ const blogSchema = new mongoose.Schema(
     },
     excerpt: {
       type: String,
-      max: 1000
+      max: 500
     },
     mtitle: {
       type: String

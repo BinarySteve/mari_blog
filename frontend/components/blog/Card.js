@@ -20,7 +20,7 @@ const Card = ({ blog }) => {
   return (
     <React.Fragment>
       <div className="card rounded shadow-lg text">
-        <h3 className="article-clean text-center display-4" id="blog-title">
+        <h3 className="article-clean text-center display-4 blog-title">
           <a href={`/blogs/${blog.slug}`}>{blog.title.toUpperCase()}</a>
         </h3>
         <small className="text-muted text-center">
@@ -37,7 +37,7 @@ const Card = ({ blog }) => {
             </a>
           </div>
           <div className="card-body col-md-6">
-            <p className="card-text" id="blog-text">
+            <p className="card-text blog-text">
               {renderHTML(blog.excerpt)}
             </p>
             <a href={`/blogs/${blog.slug}`}>

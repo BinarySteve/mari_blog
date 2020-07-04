@@ -18,8 +18,8 @@ const Header = () => {
   return (
     <React.Fragment>
       <nav className="navbar navbar-dark bg-dark border-bottom shadow navbar-expand-md navigation-clean-search">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+        <div className="container-fluid ">
+          <a className="navbar-brand cfont" href="/">
             {APP_NAME}
           </a>
           <button

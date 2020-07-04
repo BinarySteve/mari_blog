@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import Router from "next/router";
 import { getCookie, isAuth } from "../../actions/auth";
 import { list, removeBlog } from "../../actions/blog";
 import moment from "moment";
@@ -15,7 +14,7 @@ const BlogRead = () => {
   }, []);
 
   const loadBlogs = () => {
-    list().then(data => {
+    list().then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -24,8 +23,8 @@ const BlogRead = () => {
     });
   };
 
-  const deleteBlog = slug => {
-    removeBlog(slug, token).then(data => {
+  const deleteBlog = (slug) => {
+    removeBlog(slug, token).then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -35,18 +34,26 @@ const BlogRead = () => {
     });
   };
 
-  const deleteConfirm = slug => {
-    let answer = window.confirm(`Are you sure you want to delete "${slug.toLowerCase().split('-').map(word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')}"?`);
+  const deleteConfirm = (slug) => {
+    let answer = window.confirm(
+      `Are you sure you want to delete "${slug
+        .toLowerCase()
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.substring(1))
+        .join(" ")}"?`
+    );
     if (answer) {
       deleteBlog(slug);
     }
   };
 
-  const showUpdateButton = blog => {
+  const showUpdateButton = (blog) => {
     if (isAuth() && isAuth().role === 1) {
       return (
         <Link href={`/admin/crud/${blog.slug}`}>
-          <a className="ml-2 btn btn-sm btn-warning">Update</a>
+          <a className="m-5 btn ld-btn-update btn-outline-secondary rounded">
+            <i class="fas fa-user-edit"> Update</i>
+          </a>
         </Link>
       );
     }
@@ -55,19 +62,21 @@ const BlogRead = () => {
   const showAllBlogs = () => {
     return blogs.map((blog, i) => {
       return (
-        <div key={i} className="pb-5">
-          <h3>{blog.title}</h3>
-          <p className="mark">
-            Written by {blog.postedBy.name} | Published on{" "}
-            {moment(blog.updatedAt).fromNow()}
-          </p>
-          <button
-            className="btn btn-sm btn-danger"
-            onClick={() => deleteConfirm(blog.slug)}
-          >
-            Delete
-          </button>
-          {showUpdateButton(blog)}
+        <div key={i} className="card w-75 mx-auto text-center shadow m-3">
+          <div className="blog-body">
+            <h3 className="blog-title">{blog.title}</h3>
+            <p className="blog-text">
+              Written by {blog.postedBy.name} | Published on{" "}
+              {moment(blog.updatedAt).fromNow()}
+            </p>
+            {showUpdateButton(blog)}
+            <button
+              className=" m-5 btn ld-btn-danger btn-outline-secondary rounded "
+              onClick={() => deleteConfirm(blog.slug)}
+            >
+              <i class="fas fa-trash-alt"> Delete</i>
+            </button>
+          </div>
         </div>
       );
     });

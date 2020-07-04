@@ -25,7 +25,7 @@ const BlogUpdate = ({ router }) => {
     success: "",
     formData: "",
     title: "",
-    body: ""
+    body: "",
   });
 
   const { error, success, formData, title } = values;
@@ -40,7 +40,7 @@ const BlogUpdate = ({ router }) => {
 
   const initBlog = () => {
     if (router.query.slug) {
-      singleBlog(router.query.slug).then(data => {
+      singleBlog(router.query.slug).then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
@@ -53,7 +53,7 @@ const BlogUpdate = ({ router }) => {
     }
   };
 
-  const setCategoriesArray = blogCategories => {
+  const setCategoriesArray = (blogCategories) => {
     let ca = [];
     blogCategories.map((c, i) => {
       ca.push(c._id);
@@ -61,7 +61,7 @@ const BlogUpdate = ({ router }) => {
     setCheckedCategory(ca);
   };
 
-  const setTagsArray = blogTags => {
+  const setTagsArray = (blogTags) => {
     let ta = [];
     blogTags.map((t, i) => {
       ta.push(t._id);
@@ -70,7 +70,7 @@ const BlogUpdate = ({ router }) => {
   };
 
   const initCategories = () => {
-    getCategories().then(data => {
+    getCategories().then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -80,7 +80,7 @@ const BlogUpdate = ({ router }) => {
   };
 
   const initTags = () => {
-    getTags().then(data => {
+    getTags().then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -89,7 +89,7 @@ const BlogUpdate = ({ router }) => {
     });
   };
 
-  const handleToggle = c => () => {
+  const handleToggle = (c) => () => {
     setValues({ ...values, error: "" });
     // return the first index or -1
     const clickedCategory = checkedCategory.indexOf(c);
@@ -105,7 +105,7 @@ const BlogUpdate = ({ router }) => {
     formData.set("categories", all);
   };
 
-  const handleTagsToggle = c => () => {
+  const handleTagsToggle = (c) => () => {
     setValues({ ...values, error: "" });
     // return the first index or -1
     const clickedTag = checkedTag.indexOf(c);
@@ -121,7 +121,7 @@ const BlogUpdate = ({ router }) => {
     formData.set("tags", all);
   };
 
-  const findOutCategory = c => {
+  const findOutCategory = (c) => {
     let result = checkedCategory.indexOf(c);
     if (result !== -1) {
       return true;
@@ -130,7 +130,7 @@ const BlogUpdate = ({ router }) => {
     }
   };
 
-  const findOutTag = t => {
+  const findOutTag = (t) => {
     let result = checkedTag.indexOf(t);
     if (result !== -1) {
       return true;
@@ -179,27 +179,27 @@ const BlogUpdate = ({ router }) => {
     );
   };
 
-  const handleChange = name => e => {
+  const handleChange = (name) => (e) => {
     const value = name === "photo" ? e.target.files[0] : e.target.value;
     formData.set(name, value);
     setValues({ ...values, [name]: value, formData, error: "" });
   };
 
-  const handleBody = e => {
+  const handleBody = (e) => {
     setBody(e);
     formData.set("body", e);
   };
 
-  const editBlog = e => {
+  const editBlog = (e) => {
     e.preventDefault();
-    updateBlog(formData, token, router.query.slug).then(data => {
+    updateBlog(formData, token, router.query.slug).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
         setValues({
           ...values,
           title: "",
-          success: `"${data.title}" has been successfully updated`
+          success: `"${data.title}" has been successfully updated`,
         });
         if (isAuth() && isAuth().role === 1) {
           Router.replace(`/admin`);
@@ -230,7 +230,7 @@ const BlogUpdate = ({ router }) => {
     return (
       <form onSubmit={editBlog}>
         <div className="form-group">
-          <label className="text-muted">Title</label>
+          <label className="blog-title">Title</label>
           <input
             type="text"
             className="form-control"
@@ -247,9 +247,12 @@ const BlogUpdate = ({ router }) => {
             onChange={handleBody}
           />
         </div>
-        <div>
-          <button type="submit" className="btn btn-primary">
-            Update
+        <div className="text-center blog-text">
+          <button
+            type="submit"
+            className="btn ld-btn btn-outline-secondary rounded w-25 "
+          >
+            <i class="fas fa-paper-plane"> Publish</i>
           </button>
         </div>
       </form>
@@ -275,36 +278,31 @@ const BlogUpdate = ({ router }) => {
             />
           )}
         </div>
-
         <div className="col-md-4">
-          <div>
-            <div className="form-group pb-2">
-              <h5>Featured image</h5>
-              <hr />
-
-              <small className="text-muted">Max size: 1mb</small>
-              <br />
-              <label className="btn btn-outline-info">
-                Upload featured image
-                <input
-                  onChange={handleChange("photo")}
-                  type="file"
-                  accept="image/*"
-                  hidden
-                />
-              </label>
-            </div>
-          </div>
-          <div>
-            <h5>Categories</h5>
+          <div className="form-group ">
+            <h3 className="cfont text-center">Featured Image</h3>
             <hr />
 
+            <label className="btn ld-btn btn-outline-secondary rounded">
+              <i class="fas fa-file-upload"> Upload Featured Image</i>
+              <input
+                onChange={handleChange("photo")}
+                type="file"
+                accept="image/*"
+                hidden
+              />
+            </label>
+            <small className="text-muted"> Max size 1mb </small>
+          </div>
+          <div>
+            <h3 className="cfont text-center">Categories</h3>
+            <hr />
             <ul style={{ maxHeight: "200px", overflowY: "scroll" }}>
               {showCategories()}
             </ul>
           </div>
           <div>
-            <h5>Tags</h5>
+            <h3 className="cfont text-center">Tags</h3>
             <hr />
             <ul style={{ maxHeight: "200px", overflowY: "scroll" }}>
               {showTags()}

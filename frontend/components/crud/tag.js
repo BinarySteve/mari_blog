@@ -11,10 +11,18 @@ const Tag = () => {
     success: false,
     tags: [],
     removed: false,
-    reload: false
+    reload: false,
   });
 
-  const { name, error, success, tags, removed, reload } = values;
+  const {
+    name,
+    error,
+    success,
+    tags,
+    removed,
+    reload,
+    successMsg,
+  } = values;
   const token = getCookie("token");
 
   useEffect(() => {
@@ -22,7 +30,7 @@ const Tag = () => {
   }, [reload]);
 
   const loadTags = () => {
-    getTags().then(data => {
+    getTags().then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -38,24 +46,26 @@ const Tag = () => {
           onDoubleClick={() => deleteConfirm(t.slug)}
           title="Double click to delete"
           key={i}
-          className="btn btn-outline-primary mr-1 ml-1 mt-3"
+          className="btn btn-outline ld-btn m-3"
         >
-          {t.name}
+          <i class="fas fa-tag"> {t.name}</i>
         </button>
       );
     });
   };
 
-  const deleteConfirm = slug => {
-    let answer = window.confirm("Are you sure you want to delete this tag?");
+  const deleteConfirm = (slug) => {
+    let answer = window.confirm(
+      `Are you sure you want to delete "${slug.toUpperCase()}" as a tag?`
+    );
     if (answer) {
       deleteTag(slug);
     }
   };
 
-  const deleteTag = slug => {
+  const deleteTag = (slug) => {
     // console.log('delete', slug);
-    removeTag(slug, token).then(data => {
+    removeTag(slug, token).then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -65,16 +75,17 @@ const Tag = () => {
           success: false,
           name: "",
           removed: !removed,
-          reload: !reload
+          reload: !reload,
+          errorMsg: "",
         });
       }
     });
   };
 
-  const clickSubmit = e => {
+  const clickSubmit = (e) => {
     e.preventDefault();
     // console.log('create category', name);
-    create({ name }, token).then(data => {
+    create({ name }, token).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
       } else {
@@ -84,25 +95,26 @@ const Tag = () => {
           success: true,
           name: "",
           removed: "",
-          reload: !reload
+          reload: !reload,
+          successMsg: `${data.name} was created successfully`,
         });
       }
     });
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setValues({
       ...values,
       name: e.target.value,
       error: false,
       success: false,
-      removed: ""
+      removed: "",
     });
   };
 
   const showSuccess = () => {
     if (success) {
-      return <p className="text-success">Tag is created</p>;
+      return <p className="text-success">{successMsg}</p>;
     }
   };
 
@@ -114,29 +126,32 @@ const Tag = () => {
 
   const showRemoved = () => {
     if (removed) {
-      return <p className="text-danger">Tag is removed</p>;
+      return <p className="text-danger">Tag was removed</p>;
     }
   };
 
-  const mouseMoveHandler = e => {
+  const mouseMoveHandler = (e) => {
     setValues({ ...values, error: false, success: false, removed: "" });
   };
 
   const newTagFom = () => (
-    <form onSubmit={clickSubmit}>
+    <form className="mt-5" onSubmit={clickSubmit}>
       <div className="form-group">
         <label className="text-muted">Name</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control search-field"
           onChange={handleChange}
           value={name}
           required
         />
       </div>
-      <div>
-        <button type="submit" className="btn btn-primary">
-          Create
+      <div className="text-center">
+        <button
+          type="submit"
+          className="btn ld-btn btn-outline-secondary rounded"
+        >
+          <i class="far fa-edit"> Create</i>
         </button>
       </div>
     </form>
@@ -147,10 +162,9 @@ const Tag = () => {
       {showSuccess()}
       {showError()}
       {showRemoved()}
-      <div onMouseMove={mouseMoveHandler}>
-        {newTagFom()}
-        {showTags()}
-      </div>
+      {showTags()}
+      <hr/>
+      <div onMouseMove={mouseMoveHandler}>{newTagFom()}</div>
     </React.Fragment>
   );
 };

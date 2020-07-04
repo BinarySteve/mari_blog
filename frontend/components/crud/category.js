@@ -11,10 +11,18 @@ const Category = () => {
     success: false,
     categories: [],
     removed: false,
-    reload: false
+    reload: false,
   });
 
-  const { name, error, success, categories, removed, reload } = values;
+  const {
+    name,
+    error,
+    success,
+    categories,
+    removed,
+    reload,
+    successMsg,
+  } = values;
   const token = getCookie("token");
 
   useEffect(() => {
@@ -22,7 +30,7 @@ const Category = () => {
   }, [reload]);
 
   const loadCategories = () => {
-    getCategories().then(data => {
+    getCategories().then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -38,23 +46,25 @@ const Category = () => {
           onDoubleClick={() => deleteConfirm(c.slug)}
           title="Double Click to Delete"
           key={i}
-          className="btn btn-outline-primary mr-1 ml-1 mt-3"
+          className="btn btn-outline ld-btn m-3"
         >
-          {c.name}
+          <i class="fas fa-book"> {c.name}</i>
         </button>
       );
     });
   };
 
-  const deleteConfirm = slug => {
-    let answer = window.confirm(`Do you want to delete ${slug}`);
+  const deleteConfirm = (slug) => {
+    let answer = window.confirm(
+      `Are you sure you want to delete "${slug.toUpperCase()}" as a category?`
+    );
     if (answer) {
       deleteCategory(slug);
     }
   };
 
-  const deleteCategory = slug => {
-    removeCategory(slug, token).then(data => {
+  const deleteCategory = (slug) => {
+    removeCategory(slug, token).then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -64,15 +74,15 @@ const Category = () => {
           success: false,
           name: "",
           removed: !removed,
-          reload: !reload
+          reload: !reload,
         });
       }
     });
   };
-  const clickSubmit = e => {
+  const clickSubmit = (e) => {
     e.preventDefault();
     // console.log('create category', name);
-    create({ name }, token).then(data => {
+    create({ name }, token).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
       } else {
@@ -82,25 +92,26 @@ const Category = () => {
           success: true,
           name: "",
           removed: "",
-          reload: !reload
+          reload: !reload,
+          successMsg: `"${data.name.toUpperCase()}" was created as a category`,
         });
       }
     });
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setValues({
       ...values,
       name: e.target.value,
       error: false,
       success: false,
-      removed: ""
+      removed: "",
     });
   };
 
   const showSuccess = () => {
     if (success) {
-      return <p className="text-success">Category Created</p>;
+      return <p className="text-success">{successMsg}</p>;
     }
   };
   const showError = () => {
@@ -113,24 +124,27 @@ const Category = () => {
       return <p className="text-danger">Category Deleted Successfully</p>;
     }
   };
-  const mouseMoveHandler = e => {
+  const mouseMoveHandler = (e) => {
     setValues({ ...values, error: false, success: false, removed: "" });
   };
   const newCategoryForm = () => (
-    <form onSubmit={clickSubmit}>
+    <form className="mt-5" onSubmit={clickSubmit}>
       <div className="form-group">
         <label className="text-muted">Name</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control m-search"
           onChange={handleChange}
           value={name}
           required
         />
       </div>
-      <div>
-        <button type="submit" className="btn btn-primary">
-          Create
+      <div className="text-center">
+        <button
+          type="submit"
+          className="btn ld-btn btn-outline-secondary rounded"
+        >
+          <i class="far fa-edit"> Create</i>
         </button>
       </div>
     </form>
@@ -140,11 +154,9 @@ const Category = () => {
       {showSuccess()}
       {showError()}
       {showRemoved()}
-
-      <div onMouseMove={mouseMoveHandler}>
-        {newCategoryForm()}
-        {showCategories()}
-      </div>
+      {showCategories()}
+      <hr/>
+      <div onMouseMove={mouseMoveHandler}>{newCategoryForm()}</div>
     </React.Fragment>
   );
 };

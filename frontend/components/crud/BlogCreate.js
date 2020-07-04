@@ -36,7 +36,7 @@ const CreateBlog = ({ router }) => {
     success: "",
     formData: "",
     title: "",
-    hidePublishButton: false
+    hidePublishButton: false,
   });
 
   const {
@@ -45,7 +45,7 @@ const CreateBlog = ({ router }) => {
     success,
     formData,
     title,
-    hidePublishButton
+    hidePublishButton,
   } = values;
 
   const token = getCookie("token");
@@ -57,7 +57,7 @@ const CreateBlog = ({ router }) => {
   }, [router]);
 
   const initCategories = () => {
-    getCategories().then(data => {
+    getCategories().then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -67,7 +67,7 @@ const CreateBlog = ({ router }) => {
   };
 
   const initTags = () => {
-    getTags().then(data => {
+    getTags().then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -76,9 +76,9 @@ const CreateBlog = ({ router }) => {
     });
   };
 
-  const publishBlog = e => {
+  const publishBlog = (e) => {
     e.preventDefault();
-    createBlog(formData, token).then(data => {
+    createBlog(formData, token).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -86,7 +86,7 @@ const CreateBlog = ({ router }) => {
           ...values,
           title: "",
           error: "",
-          success: `Your blog "${data.title}" has been created!`
+          success: `Your blog "${data.title}" has been created!`,
         });
         setBody("");
         setCategories([]);
@@ -95,13 +95,13 @@ const CreateBlog = ({ router }) => {
     });
   };
 
-  const handleChange = name => e => {
+  const handleChange = (name) => (e) => {
     const value = name === "photo" ? e.target.files[0] : e.target.value;
     formData.set(name, value);
     setValues({ ...values, [name]: value, formData, error: "" });
   };
 
-  const handleBody = e => {
+  const handleBody = (e) => {
     setBody(e);
     formData.set("body", e);
     if (typeof window !== "undefined") {
@@ -109,7 +109,7 @@ const CreateBlog = ({ router }) => {
     }
   };
 
-  const handleToggle = c => () => {
+  const handleToggle = (c) => () => {
     setValues({ ...values, error: "" });
     // return the first index or -1
     const clickedCategory = checkedCategory.indexOf(c);
@@ -124,7 +124,7 @@ const CreateBlog = ({ router }) => {
     setCheckedCategory(all);
     formData.set("categories", all);
   };
-  const handleTagsToggle = c => () => {
+  const handleTagsToggle = (c) => () => {
     setValues({ ...values, error: "" });
     // return the first index or -1
     const clickedTag = checkedTag.indexOf(c);
@@ -148,10 +148,10 @@ const CreateBlog = ({ router }) => {
           <input
             onChange={handleToggle(c._id)}
             type="checkbox"
-            className="mr-2 custom-control-input"
+            className="custom-control-input"
             id={c.name}
           />
-          <label className="custom-control-label" htmlFor={c.name}>
+          <label className="custom-control-label blog-text" htmlFor={c.name}>
             {c.name}
           </label>
         </li>
@@ -167,10 +167,10 @@ const CreateBlog = ({ router }) => {
           <input
             onChange={handleTagsToggle(t._id)}
             type="checkbox"
-            className="mr-2 custom-control-input"
-            id={t.name+1}
+            className=" custom-control-input"
+            id={t.name + 1}
           />
-          <label className="custom-control-label" htmlFor={t.name+1}>
+          <label className="custom-control-label blog-text" htmlFor={t.name + 1}>
             {t.name}
           </label>
         </li>
@@ -206,7 +206,7 @@ const CreateBlog = ({ router }) => {
     return (
       <form onSubmit={publishBlog}>
         <div className="form-group">
-          <label className="text-muted">Title</label>
+          <label className="blog-title">Title</label>
           <input
             type="text"
             className="form-control"
@@ -223,9 +223,9 @@ const CreateBlog = ({ router }) => {
             onChange={handleBody}
           />
         </div>
-        <div>
-          <button type="submit" className="btn btn-primary">
-            Publish!
+        <div className="text-center blog-text">
+          <button type="submit" className="w-25 btn ld-btn btn-outline-secondary rounded ">
+            <i class="fas fa-paper-plane"> Publish</i>
           </button>
         </div>
       </form>
@@ -242,12 +242,12 @@ const CreateBlog = ({ router }) => {
           </div>
         </div>
         <div className="col-md-4">
-          <div className="form-group pb-2">
-            <h5>Featured Image</h5>
+          <div className="form-group ">
+            <h3 className="cfont text-center">Featured Image</h3>
             <hr />
-            <small className="text-muted">Max size 1mb</small>
-            <label className="btn btn-outline-info">
-              Upload Featured Image
+
+            <label className="btn ld-btn btn-outline-secondary rounded">
+              <i class="fas fa-file-upload"> Upload Featured Image</i>
               <input
                 onChange={handleChange("photo")}
                 type="file"
@@ -255,16 +255,18 @@ const CreateBlog = ({ router }) => {
                 hidden
               />
             </label>
+            <small className="text-muted"> Max size 1mb </small>
           </div>
           <div>
-            <h5>Categories</h5>
+            <h3 className="cfont text-center">Categories</h3>
+            <hr />
             <ul style={{ maxHeight: "200px", overflowY: "scroll" }}>
               {showCategories()}
             </ul>
-            <hr />
           </div>
           <div>
-            <h5>Tags</h5>
+            <h3 className="cfont text-center">Tags</h3>
+            <hr />
             <ul style={{ maxHeight: "200px", overflowY: "scroll" }}>
               {showTags()}
             </ul>
